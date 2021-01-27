@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 app.use('/', indexRouter);
 app.use('/api/v1/user', createUserRouter)
 
-// connectToDatabase()
+connectToDatabase()
 
 export {
     app
