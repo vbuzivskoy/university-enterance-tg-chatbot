@@ -17,4 +17,15 @@ function connectToDatabase() {
         })
 }
 
-export {connectToDatabase}
+function createUser(routeData: IUser) {
+    return client
+        .query(`INSERT INTO users (tg_id, tg_username, pnohe_number, user_type, city, type_id, state)
+                values ($1, $2, $3, $4, $5, $6, $7)
+                RETURNING *`,
+            [routeData.tgId, routeData.tgUsername, routeData.phoneNumber, routeData.userType,
+                routeData.city, routeData.roleId, routeData.state]
+        )
+}
+
+
+export {connectToDatabase, createUser}
