@@ -1,9 +1,9 @@
 interface IUser {
-    id: number
+    id?: number
     tgId: string
     tgUsername: string
     phoneNumber: string
-    userType: string
+    userType: number
     city: string
     roleId: number
     state: string
