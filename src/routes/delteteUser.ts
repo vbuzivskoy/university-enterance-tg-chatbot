@@ -3,7 +3,7 @@ import {deleteUser} from "../bd";
 
 const router = express.Router();
 
-router.delete('/', (req, res) => {
+router.delete('/:id', (req, res) => {
     deleteUser(req.params.id)
         .then(data => {
             res.status(200).json({
