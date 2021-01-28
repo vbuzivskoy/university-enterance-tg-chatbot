@@ -4,9 +4,9 @@
   "description": "",
   "main": "dist/www.js",
   "scripts": {
-    "start": "node dist/www.js",
+    "start": "node dist/bin/www.js",
     "postinstall": "tsc",
-    "watch-node": "nodemon dist/www.js",
+    "watch-node": "nodemon dist/bin/www.js",
     "watch-ts": "tsc -w"
   },
   "keywords": [],
