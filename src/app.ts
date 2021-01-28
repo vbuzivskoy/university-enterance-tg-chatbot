@@ -17,7 +17,7 @@ app.use('/', indexRouter);
 app.use('/api/v1/user', createUserRouter)
 app.use('/api/v1/user', getAllUsersRouter)
 app.use('/api/v1/user', getUserRouter)
-app.use('/api/v1/user/:id', deleteUserRouter)
+app.use('/api/v1/user', deleteUserRouter)
 
 connectToDatabase()
 
