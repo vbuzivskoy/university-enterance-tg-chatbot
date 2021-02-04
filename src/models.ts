@@ -31,34 +31,50 @@ enum userType {
 }
 
 const UserType = db.define('user_types', {
-    type_name: {
-        type: DataTypes.STRING
+        type_name: {
+            type: DataTypes.STRING
+        }
+    },
+    {
+        timestamps: false
     }
-})
+)
 
 const UserRole = db.define('user_roles', {
-    role_name: {
-        type: DataTypes.STRING
+        role_name: {
+            type: DataTypes.STRING
+        }
+    },
+    {
+        timestamps: false
     }
-})
+)
 
 const BotSetting = db.define('bot_settings', {
-    name: {
-        type: DataTypes.STRING
+        name: {
+            type: DataTypes.STRING
+        },
+        value: {
+            type: DataTypes.STRING
+        }
     },
-    value: {
-        type: DataTypes.STRING
+    {
+        timestamps: false
     }
-})
+)
 
-const BotFAQ = db.define('bot_faq',{
-    name: {
-        type: DataTypes.STRING
+const BotFAQ = db.define('bot_faq', {
+        name: {
+            type: DataTypes.STRING
+        },
+        text: {
+            type: DataTypes.STRING(2000)
+        }
     },
-    text: {
-        type: DataTypes.STRING(2000)
+    {
+        timestamps: false
     }
-})
+)
 
 const Question = db.define('questions', {
     question: {
@@ -79,19 +95,22 @@ const Question = db.define('questions', {
 
 const User = db.define('users', {
         tg_id: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            unique: true
         },
         tg_name: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
         },
         name: {
             type: DataTypes.STRING
         },
         phone_number: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            unique: true
         },
         type_id: {
             type: DataTypes.BIGINT,
+            defaultValue: 1,
 
             references: {
                 model: UserType,
@@ -118,4 +137,6 @@ const User = db.define('users', {
     }
 )
 
-export  {UserRole, UserType, User, IUser, BotFAQ, BotSetting, Question}
+// User.sync({force: true})
+
+export {UserRole, UserType, User, IUser, BotFAQ, BotSetting, Question}
