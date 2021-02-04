@@ -1,5 +1,40 @@
 import * as constants from './const'
-const pg = require('pg')
+import pg from 'pg'
+import {Sequelize} from "sequelize";
+import {IUser, User} from "./models";
+
+const db = new Sequelize(
+    constants.conString,
+    {
+        dialect: 'postgres',
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false
+            }
+        },
+    }
+);
+
+function synchronizeDataBase() {
+    db.sync({alter: true})
+        .then(() => {
+            console.log("All models were synchronized successfully.")
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+
+async function connectToDB() {
+    try {
+        await db.authenticate();
+        console.log('Connection has been established successfully.');
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+    }
+}
 
 //db connect settings
 pg.defaults.ssl = true;
@@ -47,4 +82,4 @@ function getAllUsers(): Promise<any> {
         .query('SELECT * FROM users')
 }
 
-export {connectToDatabase, createUser, deleteUser, getUser, getAllUsers}
+export {connectToDatabase, createUser, deleteUser, getUser, getAllUsers, connectToDB, db, synchronizeDataBase}
