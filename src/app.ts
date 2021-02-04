@@ -10,6 +10,9 @@ const getUserRouter = require('./routes/getUserById')
 const getAllUsersRouter = require('./routes/getAllUsers')
 const changeUserRouter = require('./routes/updateUser')
 
+const getQuestionRoute = require('./routes/questions/test')
+const createQuestionRoute = require('./routes/questions/createQuestion')
+
 const app = express();
 
 //cors setup
@@ -28,6 +31,10 @@ app.use('/api/v1/user', getAllUsersRouter)
 app.use('/api/v1/user', getUserRouter)
 app.use('/api/v1/user', deleteUserRouter)
 app.use('/api/v1/user', changeUserRouter)
+
+app.use('/api/v1/question', getQuestionRoute)
+app.use('/api/v1/question', createQuestionRoute)
+
 
 connectToDB()
 
