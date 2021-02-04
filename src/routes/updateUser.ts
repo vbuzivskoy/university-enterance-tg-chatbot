@@ -3,31 +3,28 @@ import {User} from "../models";
 
 const router = express.Router();
 
-router.put('/:id', (req, res) => {
-    User.update(req.body, {
-        where: {
-            id: req.params.id
+router.put('/', async (req, res) => {
+    try {
+        const telegramId = req.query.tg_id
+        const updatedUser = await User.update(req.body, {
+            where: {
+                tg_id: telegramId
+            },
+            returning: true
+        })
+        if(!updatedUser[0]){
+            throw new Error('User Does not exist')
         }
-    })
-        .then(() => {
-            return User.findAll({
-                where: {
-                    id: req.params.id
-                }
-            })
+        res.status(200).json({
+            status: 'success',
+            user: updatedUser[1][0].get()
         })
-        .then((data) => {
-            res.status(200).json({
-                status: 'success',
-                data
-            })
+    } catch (error) {
+        res.status(404).json({
+            message: error.message,
+            error: error
         })
-        .catch(error => {
-            res.status(404).json({
-                status: 'error',
-                error
-            })
-        })
+    }
 })
 
 module.exports = router;
