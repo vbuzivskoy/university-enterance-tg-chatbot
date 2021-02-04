@@ -1,22 +1,19 @@
 import express from 'express';
-import {getUser} from "../bd";
+import {User} from "../models";
 
 const router = express.Router();
 
 router.get('/:id', (req, res) => {
-    getUser(req.params.id)
-        .then(data => {
-            if (data.rows.length === 0) {
-                res.status(404).json({
-                    status: 'error',
-                    info: "user doesn't exist"
-                })
-            } else {
-                res.status(200).json({
-                    status: 'success',
-                    user: data.rows[0]
-                })
-            }
+    User.findAll({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then((data) => {
+            res.status(200).json({
+                status: 'success',
+                data
+            })
         })
         .catch(error => {
             res.status(404).json({

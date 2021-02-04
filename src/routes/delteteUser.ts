@@ -1,10 +1,15 @@
 import express from 'express';
 import {deleteUser} from "../bd";
+import {User} from "../models";
 
 const router = express.Router();
 
 router.delete('/:id', (req, res) => {
-    deleteUser(req.params.id)
+    User.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
         .then(data => {
             res.status(200).json({
                 status: 'success',

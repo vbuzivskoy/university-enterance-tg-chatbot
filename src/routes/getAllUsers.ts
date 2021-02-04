@@ -1,14 +1,16 @@
 import express from 'express';
-import {getAllUsers} from "../bd";
+import {User} from "../models";
+
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    getAllUsers()
-        .then(data => {
+    User.findAll({})
+        .then(users => {
+            console.log("All users:", JSON.stringify(users, null, 2));
             res.status(200).json({
                 status: 'success',
-                users: data.rows
+                users
             })
         })
         .catch(error => {

@@ -1,21 +1,18 @@
 import express from 'express';
-import {createUser} from "../bd";
+import {User} from "../models";
 
 const router = express.Router();
 
 router.post('/', (req, res) => {
-    createUser(req.body)
+    User.create(req.body)
         .then(data => {
             res.status(200).json({
                 status: 'success',
-                user: data.rows[0]
+                user: data
             })
         })
-        .catch(error => {
-            res.status(404).json({
-                status: 'error',
-                error
-            })
+        .catch(err => {
+            return err
         })
 })
 
