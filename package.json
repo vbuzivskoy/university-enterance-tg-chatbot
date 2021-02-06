@@ -1,11 +1,14 @@
 {
-  "name": "bot-test",
+  "name": "telegram-bot",
   "version": "1.0.0",
   "description": "",
   "main": "dist/www.js",
   "scripts": {
-    "start": "node dist/bin/www.js",
-    "postinstall": "tsc",
+    "start:dev": "nodemon",
+    "build": "rimraf ./build && tsc",
+    "start": "npm run build && node build/app.js",
+    "lint": "eslint . --ext .ts",
+    "lint-and-fix": "eslint . --ext .ts --fix",
     "watch-node": "nodemon dist/bin/www.js",
     "watch-ts": "tsc -w"
   },
