@@ -45,7 +45,10 @@ app.use('/api/v1/questions', createQuestionRouter);
 app.use('/api/v1/questions', getQuestionsListRouter);
 app.use('/api/v1/questions', getQuestionByIdRouter);
 
-connectToDB()
+app.use('/api/v1/settings/faq', changeFAQRouter);
+
+// connect to database
+connectToDB();
 
 export {
   app,
