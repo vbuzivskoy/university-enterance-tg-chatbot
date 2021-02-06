@@ -1,22 +1,21 @@
 import express from 'express';
-import {User} from "../models";
+import { User } from '../models';
 
+const getAllUsersRouter = express.Router();
 
-const router = express.Router();
+getAllUsersRouter.get('/', async (req, res) => {
+  try {
+    const usersList = await User.findAll();
+    res.status(200).json({
+      status: 'success',
+      users: usersList,
+    });
+  } catch (error) {
+    res.status(404).json({
+      message: error.message,
+      error,
+    });
+  }
+});
 
-router.get('/', async (req, res) => {
-    try{
-        const usersList = await User.findAll()
-        res.status(200).json({
-            status: 'success',
-            users: usersList
-        })
-    } catch (error) {
-        res.status(404).json({
-            message: error.message,
-            error: error
-        })
-    }
-})
-
-module.exports = router;
+export { getAllUsersRouter };

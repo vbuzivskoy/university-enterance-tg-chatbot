@@ -1,10 +1,12 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
 
-declare var process : {
+dotenv.config();
+
+declare let process: {
     env: {
         DATABASE_URL: string
     }
-}
+};
 
 const conString = process.env.DATABASE_URL;
 
