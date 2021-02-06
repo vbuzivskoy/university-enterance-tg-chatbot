@@ -17,6 +17,7 @@ import { adminsListRouter } from './routes/admin routes/getAminsList';
 import { getQuestionByIdRouter } from './routes/questions routes/getQuestionById';
 import { getPopularQuestionsListRouter } from './routes/questions routes/getPopularQuestions';
 import { changeFAQRouter } from './routes/FAQ change routes/changeFAQ';
+import { getUsersAmountRouter } from './routes/getUserStatistc';
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
+app.use('/api/v1/users/statistic', getUsersAmountRouter);
 app.use('/api/v1/users', createUserRouter);
 app.use('/api/v1/users', getAllUsersRouter);
 app.use('/api/v1/users', deleteUserRouter);
