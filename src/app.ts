@@ -40,6 +40,10 @@ app.use('/api/v1/admins/add', addAdminRouter);
 app.use('/api/v1/admins/delete', deleteAdminRouter);
 app.use('/api/v1/admins/list', adminsListRouter);
 
+app.use('/api/v1/questions/popular', getPopularQuestionsListRouter);
+app.use('/api/v1/questions', createQuestionRouter);
+app.use('/api/v1/questions', getQuestionsListRouter);
+app.use('/api/v1/questions', getQuestionByIdRouter);
 
 connectToDB()
 
