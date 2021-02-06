@@ -36,8 +36,9 @@ app.use('/api/v1/users', deleteUserRouter);
 app.use('/api/v1/users', getUserByTelegramIdRouter);
 app.use('/api/v1/users', updateUserDataRouter);
 
-app.use('/api/v1/question', getQuestionRoute)
-app.use('/api/v1/question', createQuestionRoute)
+app.use('/api/v1/admins/add', addAdminRouter);
+app.use('/api/v1/admins/delete', deleteAdminRouter);
+app.use('/api/v1/admins/list', adminsListRouter);
 
 
 connectToDB()
