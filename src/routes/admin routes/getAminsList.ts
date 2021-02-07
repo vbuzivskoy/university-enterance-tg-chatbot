@@ -5,7 +5,7 @@ const adminsListRouter = express.Router();
 
 adminsListRouter.get('/', async (req, res) => {
   try {
-    const users = await User.findOne({
+    const users = await User.findAll({
       where: {
         type_id: 2,
       },
