@@ -3,13 +3,13 @@ import { Question, User } from '../../models';
 
 const getQuestionsListRouter = express.Router();
 
-getQuestionsListRouter.get('/:has_answer?', async (req, res) => {
+getQuestionsListRouter.get('/', async (req, res) => {
   try {
     let params: object = {};
-    if (req.params.has_answer) {
+    if (req.query.has_answer) {
       params = {
         where: {
-          has_answer: req.params.has_answer,
+          has_answer: req.query.has_answer,
         },
       };
     }
