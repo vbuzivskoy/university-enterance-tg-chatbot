@@ -6,11 +6,13 @@
   "scripts": {
     "start:dev": "nodemon",
     "build": "rimraf ./dist && tsc",
-    "start": "npm run build && node dist/bin/www.js",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
     "watch-node": "nodemon dist/bin/www.js",
-    "watch-ts": "tsc -w"
+    "watch-ts": "tsc -w",
+
+    "start": "node dist/bin/www.js",
+    "postinstall": "tsc"
   },
   "keywords": [],
   "author": "",
