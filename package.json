@@ -5,8 +5,8 @@
   "main": "dist/www.js",
   "scripts": {
     "start:dev": "nodemon",
-    "build": "rimraf ./build && tsc",
-    "start": "npm run build && node build/app.js",
+    "build": "rimraf ./dist && tsc",
+    "start": "npm run build && node dist/bin/www.js",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
     "watch-node": "nodemon dist/bin/www.js",
