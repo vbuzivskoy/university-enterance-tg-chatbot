@@ -24,12 +24,6 @@ interface IUser {
     state: string
 }
 
-enum userType {
-    Regular,
-    Admin,
-    SuperAdmin
-}
-
 const UserType = db.define('user_types', {
   type_name: {
     type: DataTypes.STRING,
@@ -60,19 +54,7 @@ const BotSetting = db.define('bot_settings', {
   timestamps: false,
 });
 
-const BotFAQ = db.define('bot_faq', {
-  name: {
-    type: DataTypes.STRING,
-  },
-  text: {
-    type: DataTypes.STRING(2000),
-  },
-},
-{
-  timestamps: false,
-});
-
-const Question = db.define('questions', {
+const FAQQuestion = db.define('faq_questions', {
   question: {
     type: DataTypes.STRING(2000),
     allowNull: false,
@@ -80,15 +62,18 @@ const Question = db.define('questions', {
   answer: {
     type: DataTypes.STRING(2000),
   },
-  has_answer: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  },
   stats: {
     type: DataTypes.INTEGER,
     defaultValue: 1,
   },
 });
+
+const UnansweredQuestion = db.define('unanswered_questions',{
+    question: {
+        type: DataTypes.STRING(2000),
+        allowNull: false,
+    }
+})
 
 const User = db.define('users', {
   tg_id: {
@@ -96,9 +81,6 @@ const User = db.define('users', {
     unique: true,
   },
   tg_name: {
-    type: DataTypes.STRING,
-  },
-  name: {
     type: DataTypes.STRING,
   },
   phone_number: {
@@ -133,9 +115,6 @@ const User = db.define('users', {
   timestamps: false,
 });
 
-// User.sync({force: true})
-// Question.sync({force: true})
-
 export {
-  UserRole, UserType, User, IUser, BotFAQ, BotSetting, Question,
+    IUser, UserRole, UserType, User, BotSetting, FAQQuestion, UnansweredQuestion
 };
