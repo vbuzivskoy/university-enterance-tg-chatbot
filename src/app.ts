@@ -20,6 +20,8 @@ import { connectToDB } from './bd';
 // import { getUsersAmountRouter } from './routes/getUserStatistc';
 import { usersRouter } from './routes/users';
 import { adminsRouter } from './routes/admin';
+import { settingsRouter } from './routes/settings';
+import { questionsRouter } from './routes/questions';
 
 const app = express();
 
@@ -35,23 +37,10 @@ app.use(cors(corsOptions));
 
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/admins', adminsRouter);
+app.use('/api/v1/settings', settingsRouter);
+app.use('/api/v1/questions', questionsRouter);
+
 // app.use('/api/v1/users/statistic', getUsersAmountRouter);
-// app.use('/api/v1/users', createUserRouter);
-// app.use('/api/v1/users', getAllUsersRouter);
-// app.use('/api/v1/users', deleteUserRouter);
-// app.use('/api/v1/users', getUserByTelegramIdRouter);
-// app.use('/api/v1/users', updateUserDataRouter);
-//
-// app.use('/api/v1/admins/add', addAdminRouter);
-// app.use('/api/v1/admins/delete', deleteAdminRouter);
-// app.use('/api/v1/admins/list', adminsListRouter);
-//
-// app.use('/api/v1/questions/popular', getPopularQuestionsListRouter);
-// app.use('/api/v1/questions', createQuestionRouter);
-// app.use('/api/v1/questions', getQuestionsListRouter);
-// app.use('/api/v1/questions', getQuestionByIdRouter);
-//
-// app.use('/api/v1/settings/faq', changeFAQRouter);
 
 // connect to database
 connectToDB();
