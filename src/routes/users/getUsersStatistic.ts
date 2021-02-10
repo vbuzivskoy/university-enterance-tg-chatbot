@@ -5,21 +5,14 @@ const getUsersAmountRouter = express.Router();
 
 getUsersAmountRouter.get('/', async (req, res) => {
   try {
-    let param = {};
-    if (req.query.role_id) {
-      param = {
-        where: {
-          role_id: req.query.role_id,
-        },
-      };
-    }
-    const amount = await User.count(param);
+    const queryParams = { ...req.query };
+    const amount = await User.count({ where: queryParams });
     res.status(200).json({
       status: 'success',
       usersAmount: amount,
     });
   } catch (error) {
-    res.status(404).json({
+    res.status(500).json({
       message: error.message,
       error,
     });
