@@ -5,15 +5,11 @@ const getAllUsersRouter = express.Router();
 
 getAllUsersRouter.get('/', async (req, res) => {
   try {
-    let params = {};
-    if (req.query.role_id) {
-      params = {
-        where: {
-          role_id: req.query.role_id,
-        },
-      };
+    const queryParams = { ...req.query };
+    const usersList = await User.findAll({ where: queryParams });
+    if (usersList.length === 0) {
+      throw new Error('Not found');
     }
-    const usersList = await User.findAll(params);
     res.status(200).json({
       status: 'success',
       users: usersList,
