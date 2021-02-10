@@ -20,6 +20,8 @@
   "exclude": [
     "node_modules",
     "dist",
-    "db_migrations"
+    "config",
+    "migrations",
+    "seeders",
   ]
 }
