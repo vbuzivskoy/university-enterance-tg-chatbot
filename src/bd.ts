@@ -24,5 +24,5 @@ async function connectToDB() {
 }
 
 export {
-    connectToDB, db
+  connectToDB, db,
 };
