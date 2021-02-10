@@ -19,6 +19,7 @@ import { connectToDB } from './bd';
 // import { changeFAQRouter } from './routes/FAQ change routes/changeFAQ';
 // import { getUsersAmountRouter } from './routes/getUserStatistc';
 import {usersRouter} from "./routes/users";
+import {adminsRouter} from "./routes/admin";
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
 app.use('/api/v1/users', usersRouter)
+app.use('/api/v1/admins', adminsRouter)
 // app.use('/api/v1/users/statistic', getUsersAmountRouter);
 // app.use('/api/v1/users', createUserRouter);
 // app.use('/api/v1/users', getAllUsersRouter);
