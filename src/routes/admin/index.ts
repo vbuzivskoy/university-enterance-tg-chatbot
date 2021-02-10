@@ -6,7 +6,7 @@ import { adminsListRouter } from './getAdminList';
 const adminsRouter = Router();
 
 adminsRouter.use('/add', addAdminRouter);
-deleteAdminRouter.use('/delete', addAdminRouter);
-adminsListRouter.use('/get', addAdminRouter);
+adminsRouter.use('/delete', deleteAdminRouter);
+adminsRouter.use('/list', adminsListRouter);
 
 export { adminsRouter };

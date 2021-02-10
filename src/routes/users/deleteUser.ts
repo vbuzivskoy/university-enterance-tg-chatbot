@@ -5,12 +5,12 @@ const deleteUserRouter = express.Router();
 
 deleteUserRouter.delete('/', async (req, res) => {
   try {
-    if (req.body.tg_id === undefined) {
+    if (req.query.tg_id === undefined) {
       throw new Error('Telegram id (tg_id) parameter is not found');
     }
     const isDeleted = await User.destroy({
       where: {
-        tg_id: req.body.tg_id,
+        tg_id: req.query.tg_id,
       },
     });
     if (!isDeleted) {
@@ -18,10 +18,10 @@ deleteUserRouter.delete('/', async (req, res) => {
     }
     res.status(200).json({
       status: 'success',
-      info: `user ${req.body.tg_id} has been deleted`,
+      info: `user ${req.query.tg_id} has been deleted`,
     });
   } catch (error) {
-    res.status(404).json({
+    res.status(500).json({
       message: error.message,
       error,
     });

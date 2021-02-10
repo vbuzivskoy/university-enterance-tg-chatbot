@@ -3,14 +3,16 @@ import { FAQ } from '../../models';
 
 const getFaqListRouter = express.Router();
 
-getFaqListRouter.get('/:id', async (req, res) => {
+getFaqListRouter.get('/', async (req, res) => {
   try {
+    let where = {};
+    if (req.query.id) {
+      where = { id: req.query.id };
+    }
     const params: object = {
-      limit: req.query.questions_amount || 5,
+      limit: req.query.questions_amount,
       order: [['stats', 'DESC']],
-      where: {
-        id: req.params.id,
-      },
+      where,
     };
     const questions: object = await FAQ.findAll(params);
     res.status(200).json({
@@ -18,7 +20,7 @@ getFaqListRouter.get('/:id', async (req, res) => {
       questions,
     });
   } catch (error) {
-    res.status(404).json({
+    res.status(500).json({
       message: error.message,
       error,
     });
