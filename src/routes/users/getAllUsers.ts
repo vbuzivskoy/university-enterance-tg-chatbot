@@ -19,7 +19,7 @@ getAllUsersRouter.get('/', async (req, res) => {
       users: usersList,
     });
   } catch (error) {
-    res.status(404).json({
+    res.status(500).json({
       message: error.message,
       error,
     });
