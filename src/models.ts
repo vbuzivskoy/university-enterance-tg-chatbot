@@ -54,7 +54,7 @@ const BotSetting = db.define('bot_settings', {
   timestamps: false,
 });
 
-const FAQQuestion = db.define('faq_questions', {
+const FAQ = db.define('faqs', {
   question: {
     type: DataTypes.STRING(2000),
     allowNull: false,
@@ -68,12 +68,12 @@ const FAQQuestion = db.define('faq_questions', {
   },
 });
 
-const UnansweredQuestion = db.define('unanswered_questions',{
-    question: {
-        type: DataTypes.STRING(2000),
-        allowNull: false,
-    }
-})
+const UnansweredQuestion = db.define('unanswered_questions', {
+  question: {
+    type: DataTypes.STRING(2000),
+    allowNull: false,
+  },
+});
 
 const User = db.define('users', {
   tg_id: {
@@ -116,5 +116,5 @@ const User = db.define('users', {
 });
 
 export {
-    IUser, UserRole, UserType, User, BotSetting, FAQQuestion, UnansweredQuestion
+  IUser, UserRole, UserType, User, BotSetting, FAQ, UnansweredQuestion,
 };
