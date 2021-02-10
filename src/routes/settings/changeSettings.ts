@@ -1,9 +1,9 @@
 import express from 'express';
 import { BotSetting } from '../../models';
 
-const changeFAQRouter = express.Router();
+const changeSettingsRouter = express.Router();
 
-changeFAQRouter.put('/', async (req, res) => {
+changeSettingsRouter.put('/', async (req, res) => {
   try {
     if (!req.body.name || !req.body.value) {
       throw new Error("dispatched JSON must have 'name' and 'value' field");
@@ -30,4 +30,4 @@ changeFAQRouter.put('/', async (req, res) => {
   }
 });
 
-export { changeFAQRouter };
+export { changeSettingsRouter };
