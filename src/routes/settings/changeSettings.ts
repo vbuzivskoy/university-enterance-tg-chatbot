@@ -17,13 +17,12 @@ changeSettingsRouter.put('/', async (req, res) => {
     if (!updatedFAQ[0]) {
       throw new Error(`the value has not been updated, check value name: ${req.body.name}`);
     }
-    console.log(updatedFAQ);
     res.status(200).json({
       status: 'success',
       faq: updatedFAQ[1][0],
     });
   } catch (error) {
-    res.status(404).json({
+    res.status(500).json({
       message: error.message,
       error,
     });
