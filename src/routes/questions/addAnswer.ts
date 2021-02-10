@@ -19,7 +19,6 @@ addQuestionAnswer.post('/', async (req, res) => {
     if (unansweredQuestion?.get() === undefined) {
       throw new Error(`Question number ${req.body.id} does not exist`);
     }
-    console.log(unansweredQuestion?.get());
     await UnansweredQuestion.destroy({
       where: {
         id: req.body.id,

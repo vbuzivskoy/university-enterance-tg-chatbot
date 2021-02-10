@@ -14,7 +14,7 @@ createUserRouter.post('/', async (req, res) => {
       user,
     });
   } catch (error) {
-    res.status(404).json({
+    res.status(500).json({
       message: error.message,
       error,
     });
