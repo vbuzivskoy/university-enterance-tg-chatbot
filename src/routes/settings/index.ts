@@ -3,6 +3,6 @@ import { changeSettingsRouter } from './changeSettings';
 
 const settingsRouter = Router();
 
-settingsRouter.use('/add', changeSettingsRouter);
+settingsRouter.use('/change', changeSettingsRouter);
 
 export { settingsRouter };
