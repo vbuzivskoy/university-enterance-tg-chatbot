@@ -18,7 +18,7 @@ deleteUserRouter.delete('/', async (req, res) => {
     }
     res.status(200).json({
       status: 'success',
-      info: `user ${req.query.tg_id} has been deleted`,
+      info: `User ${req.query.tg_id} has been deleted`,
     });
   } catch (error) {
     res.status(500).json({

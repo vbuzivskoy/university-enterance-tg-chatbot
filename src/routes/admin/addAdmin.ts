@@ -7,7 +7,7 @@ addAdminRouter.put('/', async (req, res) => {
   try {
     const telegramId = req.query.tg_id;
     if (telegramId === undefined) {
-      throw new Error('tg_id parameter is not found');
+      throw new Error('"tg_id" parameter is not found in query');
     }
     const adminAdded = await User.update({ type_id: 2 }, {
       where: {
