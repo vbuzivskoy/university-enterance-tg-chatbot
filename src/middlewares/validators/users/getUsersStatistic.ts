@@ -11,6 +11,6 @@ const querySchema = Joi.object({
   role_id: Joi.number(),
 });
 
-router.get('/statistics', validator.query(querySchema));
+router.get('/', validator.query(querySchema));
 
 export default router;

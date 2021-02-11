@@ -12,6 +12,6 @@ usersValidatorsMiddleware.use('/', createUserValidatorMiddleware);
 usersValidatorsMiddleware.use('/', deleteUserValidatorMiddleware);
 usersValidatorsMiddleware.use('/', updateUserValidatorMiddleware);
 usersValidatorsMiddleware.use('/', getAllUserValidatorMiddleware);
-usersValidatorsMiddleware.use('/', getUsersStatisticMiddleware);
+usersValidatorsMiddleware.use('/statistics', getUsersStatisticMiddleware);
 
 export default usersValidatorsMiddleware;
