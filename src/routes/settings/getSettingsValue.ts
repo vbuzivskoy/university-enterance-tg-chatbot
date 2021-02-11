@@ -19,7 +19,7 @@ getSettingsValueRouter.get('/', async (req, res) => {
     }
     res.status(200).json({
       status: 'success',
-      settings: settingsValue,
+      settings: settingsValue[0],
     });
   } catch (error) {
     res.status(500).json({
