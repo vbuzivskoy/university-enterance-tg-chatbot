@@ -13,14 +13,14 @@ updateUserDataRouter.put('/', async (req, res) => {
       returning: true,
     });
     if (!updatedUser[0]) {
-      throw new Error('User Does not exist');
+      throw new Error('User does not updated');
     }
     res.status(200).json({
       status: 'success',
       user: updatedUser[1][0].get(),
     });
   } catch (error) {
-    res.status(404).json({
+    res.status(500).json({
       message: error.message,
       error,
     });

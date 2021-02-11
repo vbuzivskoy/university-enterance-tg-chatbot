@@ -6,6 +6,9 @@ const deleteAdminRouter = express.Router();
 deleteAdminRouter.put('/', async (req, res) => {
   try {
     const telegramId = req.query.tg_id;
+    if (telegramId === undefined) {
+      throw new Error('tg_id parameter is not found');
+    }
     const adminDeleted = await User.update({ type_id: 1 }, {
       where: {
         tg_id: telegramId,
@@ -20,7 +23,7 @@ deleteAdminRouter.put('/', async (req, res) => {
       user: adminDeleted[1][0].get(),
     });
   } catch (error) {
-    res.status(404).json({
+    res.status(500).json({
       message: error.message,
       error,
     });
