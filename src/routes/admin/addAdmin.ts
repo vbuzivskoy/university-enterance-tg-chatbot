@@ -12,12 +12,12 @@ addAdminRouter.put('/', async (req, res) => {
     const adminTgId = req.headers.tg_id;
     const isAdmin = await User.findOne({
       where: {
-        type_id: 2,
+        type_id: 3,
         tg_id: adminTgId,
       },
     });
     if (isAdmin?.get() === undefined) {
-      throw new Error('You are not admin');
+      throw new Error('You are not super admin');
     }
     const adminAdded = await User.update({ type_id: 2 }, {
       where: {
