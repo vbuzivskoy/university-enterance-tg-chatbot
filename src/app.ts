@@ -4,6 +4,7 @@ import cors from 'cors';
 import { connectToDB } from './bd';
 
 import { APIV1Router } from './routes';
+import { validatorsMiddlewares } from './middlewares';
 
 const app = express();
 
@@ -16,6 +17,7 @@ const corsOptions = {
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
+app.use('/api/v1', validatorsMiddlewares);
 
 app.use('/api/v1', APIV1Router);
 
