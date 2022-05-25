@@ -3,7 +3,7 @@ Backend of Telegram bot for communication between the university and applicants
 
 
 Diagram link
-https://dbdiagram.io/d/6012d60e80d742080a383d3b
+https://dbdiagram.io/d/628df595f040f104c19339b2
 
 Postman link 
 https://www.getpostman.com/collections/8e901a8e93bdb4270446
